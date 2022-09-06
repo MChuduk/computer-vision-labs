@@ -2,9 +2,6 @@ import cv2
 import matplotlib.pyplot as plt
 import numpy as np
 
-def get_channel(image, channel):
-    return image[:,:, channel]
-
 def to_grey(image):
     return cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
@@ -27,49 +24,28 @@ def show_hists(rgb_image, name="hist.png"):
     
 image = cv2.imread("1.jpg")
 
-# image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+# задание 1 - вывести изображение 
+cv2.imshow("image", image);
+cv2.waitKey(0);
 
+# задание 2 - изображение в оттеках серого
+# image = to_grey(image);
+# cv2.imshow("image", image);
+# cv2.waitKey(0);
+
+# задание 3 - бинарное изображение
 # image[:, :, 0] = 0
 # image[:, :, 2] = 0
+# cv2.imshow("image", image);
+# cv2.waitKey(0);
 
-# hb, hg, hr = compute_hists(image)
-
-        
-# fig = plt.figure()
-# plt.plot(hb, color="b")
-# plt.plot(hg, color="g")
-# plt.plot(hr, color="r")
-# plt.savefig("plot.png")
-
-# plot = cv2.imread("plot.png")
-
-# cv2.imshow("Plot", plot)
-# cv2.waitKey(0)
-
-# cv2.imshow("image", image)
-# cv2.waitKey(0)
-
-
+# задание 4 - гистограммы 
+# show_hists(image, "hist_before.png");
 # R, G, B = cv2.split(image)
 # output1_R = cv2.equalizeHist(R)
 # output1_G = cv2.equalizeHist(G)
 # output1_B = cv2.equalizeHist(B)
 # image = cv2.merge((output1_R, output1_G, output1_B))
-
-
-# hb, hg, hr = compute_hists(image)
-
-# fig = plt.figure()
-# plt.plot(hb, color="b")
-# plt.plot(hg, color="g")
-# plt.plot(hr, color="r")
-# plt.savefig("plot_equalized.png")
-
-
-# hist_equalized = cv2.imread("plot_equalized.png")
-
-# cv2.imshow("hist_equalized", hist_equalized)
-# cv2.waitKey(0)
-
-# cv2.imshow("equalize", image)
-# cv2.waitKey(0)
+# cv2.imshow("image", image);
+# cv2.waitKey(0);
+# show_hists(image, "hist_after.png");
